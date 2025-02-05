@@ -1,0 +1,158 @@
+/* Default width for small screens */
+.control-width svg {
+  width: 6.5px !important ;
+  height: 12px !important;
+}
+
+/* Width for larger screens */
+@media (min-width: 768px) {
+  /* Adjust the breakpoint as needed */
+  .control-width svg {
+    width: 8.5px !important;
+    height: 16px !important;
+  }
+}
+
+.custom-checkbox {
+  /* Remove default appearance */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  /* Size and shape */
+  width: 20px;
+  height: 20px;
+  border: 1px solid #d0d2cd; /* Light gray border */
+  border-radius: 4px; /* Rounded corners */
+
+  /* Background */
+  background-color: white;
+
+  /* Transition for smooth effects */
+  transition: all 0.3s ease;
+}
+
+/* Checked state */
+.custom-checkbox:checked {
+  background-color: #132527; /* Dark background */
+  border-color: #132527; /* Border matches background */
+  position: relative;
+}
+
+/* Checkmark */
+.custom-checkbox:checked::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 13px;
+  height: 10px;
+  background-image: url('data:image/svg+xml;utf8,<svg width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.7227 1.66016L12.0938 2.26172L5.44922 8.57812L4.84766 9.15234L4.24609 8.57812L1.12891 5.625L0.5 5.02344L1.70312 3.76562L2.33203 4.36719L4.84766 6.71875L10.8906 0.976562L11.5195 0.375L12.7227 1.66016Z" fill="%23FCFBF8"/></svg>');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+/* styles/scrollbar.css */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px; /* Width of the scrollbar */
+  height: 5px !important;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  /* background: #f1f1f1; Color of the track */
+  /* border-radius: 4px; */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #b7c3c4; /* Color of the scrollbar thumb */
+  height: 50px;
+  width: 4px;
+  transition: 0.3s;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #b0b1b1; /* Color of the scrollbar thumb on hover */
+}
+
+.marker::after {
+  content: "";
+  position: absolute;
+  bottom: -8px; /* Adjust the position of the tail */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 8px 7px 0 7px; /* Adjust size of the tail */
+  border-color: #fcfbf8 transparent transparent transparent; /* Match inner color for the tail */
+}
+
+.active-marker::after {
+  content: "";
+  position: absolute;
+  bottom: -8px; /* Adjust the position of the tail */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 8px 7px 0 7px; /* Adjust size of the tail */
+  border-color: #fcfbf8 transparent transparent transparent; /* Match inner color for the tail */
+}
+
+.marker::before {
+  content: "";
+  position: absolute;
+  z-index: 10;
+  bottom: -3px; /* Adjust the position of the tail */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 8px 7px 0 7px; /* Adjust size of the tail */
+  border-color: #727c7a transparent transparent transparent; /* Match inner color for the tail */
+}
+
+.active-marker::before {
+  content: "";
+  position: absolute;
+  z-index: 10;
+  bottom: -3px; /* Adjust the position of the tail */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 8px 7px 0 7px; /* Adjust size of the tail */
+  border-color: #132527 transparent transparent transparent !important; /* Match inner color for the tail */
+}
+
+.mapboxgl-ctrl-bottom-right .mapboxgl-ctrl-group {
+  display: flex !important; /* Ensures controls are in a flex container */
+  flex-direction: column; /* Stack them vertically */
+  gap: 5px; /* Space between the buttons */
+  box-shadow: none !important;
+}
+
+.mapboxgl-ctrl-group {
+  background-color: transparent !important;
+}
+
+.mapboxgl-ctrl-bottom-right button {
+  color: #132527 !important;
+  border: solid 1px #e3e3de !important;
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 6px !important;
+  background-color: #fcfbf8 !important;
+}
+
+.mapboxgl-ctrl-zoom-in span {
+  background-image: url("/iconplus.png") !important;
+}
+
+.mapboxgl-ctrl-zoom-out span {
+  background-image: url("/iconminus.png") !important;
+}
