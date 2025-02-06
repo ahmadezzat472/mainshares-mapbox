@@ -28,13 +28,13 @@ const Footer = () => {
         </p>
         <div className="flex gap-[6px] md:gap-[16px]">
           <a href="#">
-            <img className="w-[16px]" src="/src/assets/socialLogo.svg" />
+            <img className="w-[16px] hover:scale-110 transition-all duration-300 " src="/src/assets/socialLogo.svg" />
           </a>
           <a href="#">
-            <img className="w-[16px]" src="/src/assets/socialLogoLinked.svg" />
+            <img className="w-[16px] hover:scale-110 transition-all duration-300 " src="/src/assets/socialLogoLinked.svg" />
           </a>
           <a href="#">
-            <img className="w-[16px]" src="/src/assets/socialLogoX.svg" />
+            <img className="w-[16px] hover:scale-110 transition-all duration-300 " src="/src/assets/socialLogoX.svg" />
           </a>
         </div>
       </div>

@@ -7,20 +7,20 @@ interface FilterInputProps {
   industries: IDataFilter[];
   setSelectedIndustries: (arg: string) => void;
   selectedIndustries: string;
-  setDrobdownIsOpen: (arg: boolean) => void
+  setDrobdownIsOpen: (arg: boolean) => void;
 }
 
 const FilterInput = ({
   industries,
   selectedIndustries,
   setSelectedIndustries,
-  setDrobdownIsOpen
+  setDrobdownIsOpen,
 }: FilterInputProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const openDropDown = () => {
     setIsOpen(!isOpen);
-    setDrobdownIsOpen(!isOpen)
+    setDrobdownIsOpen(!isOpen);
   };
 
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -32,8 +32,7 @@ const FilterInput = ({
         !dropdownRef.current.contains(event.target as Node)
       ) {
         setIsOpen(false);
-        setDrobdownIsOpen(false)
-
+        setDrobdownIsOpen(false);
       }
     };
 
@@ -42,7 +41,6 @@ const FilterInput = ({
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
-  
 
   return (
     <>

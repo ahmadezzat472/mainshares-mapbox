@@ -21,7 +21,7 @@ const Dropdown = ({
   selectedIndustries,
   setDrobdownIsOpen,
 }: IProps) => {
-  const [searchQuery, setSearchQuery] = useState<string>(""); // Add searchQuery state
+  const [searchQuery, setSearchQuery] = useState<string>(""); 
   const [selectedChildren, setSelectedChildren] = useState<string[]>([]);
 
   useEffect(() => {
@@ -47,7 +47,7 @@ const Dropdown = ({
 
   if (isOpen)
     return (
-      <div className="fixed bottom-0 left-0 right-0 top-[100px] z-30 md:absolute md:bottom-auto md:left-auto md:top-[115%] md:right-0 w-full md:w-[280px] border rounded-[12px_12px_0_0] md:rounded-[6px] bg-white shadow-lg overflow-y-auto">
+      <div className="fixed bottom-0 left-0 right-0 top-[65px] z-30 md:absolute md:bottom-auto md:left-auto md:top-[115%] md:right-0 w-full md:w-[280px] border rounded-[12px_12px_0_0] md:rounded-[6px] bg-white shadow-lg overflow-y-auto">
         <div className="p-[16px] md:p-0">
           <div className="md:hidden flex items-center gap-[8px] mb-[16px]">
             <span

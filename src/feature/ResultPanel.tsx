@@ -65,8 +65,6 @@ const ResultsPanel = () => {
     };
   }, []);
 
-  console.log(drobdownIsOpen);
-
   // Handle click on ResultCard
   const handleCardClick = (id: string, localBusinesse: LocalBusiness) => {
     setActiveCardId(id);
@@ -95,9 +93,9 @@ const ResultsPanel = () => {
   return (
     <div className="flex flex-col md:flex-row gap-0 md:p-[24px] bg-[#F2F1EC] relative h-[calc(100vh-132px)] md:h-[95vh] ">
       {/* left side */}
-      <div className="p-[12px] flex flex-col gap-[12px] bg-[#FCFBF8] rounded-[6px_0_0_6px] w-full lg:w-[30%] md:w-[45%] flex-grow sm:flex-grow-0 relative overflow-auto">
+      <div className="p-[12px] flex flex-col gap-[12px] bg-[#FCFBF8] rounded-[6px_0_0_6px] w-full lg:w-[30%] md:w-[45%] relative h-full flex-1 ">
         {/* Search */}
-        <div className="p-[12px]">
+        <div className="p-[12px] ">
           <div className="flex gap-0 items-center ">
             <SearchInput
               searchValue={searchValue}
@@ -135,43 +133,85 @@ const ResultsPanel = () => {
 
         {/* Search Result */}
         <div
-          className={`bg-[#FCFBF8] custom-scrollbar overflow-x-hidden flex-grow-1 relative ${
+          className={`bg-[#FCFBF8] custom-scrollbar overflow-x-hidden overflow-auto h-[100%] md:h-auto flex-grow-1 relative ${
             isMapVisible && "hidden"
           }`}
         >
           <p className="mb-[12px] text-[14px] text-[#727C7A] font-medium px-[12px]">
             Over {localBusinesses.length} local businesses in selected area
           </p>
-          {localBusinesses.map((localBusinesse, index) => (
-            <div key={localBusinesse.id}>
-              <ResultCard
-                localBusinesseData={localBusinesse}
-                onClick={() =>
-                  handleCardClick(localBusinesse.id, localBusinesse)
-                }
-              />
+          {localBusinesses.length ? (
+            localBusinesses.map((localBusinesse, index) => (
+              <div key={localBusinesse.id}>
+                <ResultCard
+                  localBusinesseData={localBusinesse}
+                  onClick={() =>
+                    handleCardClick(localBusinesse.id, localBusinesse)
+                  }
+                />
 
-              {index !== localBusinesses.length - 1 && (
-                <div className="my-[12px]">
-                  <Separator width="100%" />
-                </div>
-              )}
-            </div>
-          ))}
+                {index !== localBusinesses.length - 1 && (
+                  <div className="my-[12px]">
+                    <Separator width="100%" />
+                  </div>
+                )}
+              </div>
+            ))
+          ) : (
+            <p className="mt-[12px] text-[14px] font-bold px-[12px]">
+              loading ...
+            </p>
+          )}
         </div>
       </div>
 
       {/* Map */}
       <div
-        className={`h-[87%] md:h-[100%] sm:flex-1 lg:w-[70%] md:w-[55%]  ${
+        className={`h-[100%] lg:w-[70%] md:w-[55%] flex flex-col ${
           isMapVisible ? "block" : "h-0 hidden md:h-[100%] md:block"
         }`}
       >
-        <Mapbox
-          localBusinesses={localBusinesses}
-          activeCardId={activeCardId}
-          setActiveCardId={setActiveCardId}
-        />
+        <div className="flex-grow md:h-[100%]">
+          <Mapbox
+            localBusinesses={localBusinesses}
+            activeCardId={activeCardId}
+            setActiveCardId={setActiveCardId}
+          />
+        </div>
+        {isMapVisible && (
+          <div
+            className={`md:hidden p-[8px_8px_30px_8px] bg-[#FCFBF8] rounded-[12px_12px_0_0] border-b-2 border-[#E3E3DE]`}
+          >
+            <p className="mb-[12px] text-[14px] text-[#727C7A] font-medium px-[12px] pt-[12px]">
+              Over {localBusinesses.length} local businesses in selected area
+            </p>
+            {localBusinesses.slice(0, 2).map((localBusinesse, index) => (
+              <div key={localBusinesse.id}>
+                <ResultCard
+                  localBusinesseData={localBusinesse}
+                  onClick={() =>
+                    handleCardClick(localBusinesse.id, localBusinesse)
+                  }
+                />
+                {index !== 1 && (
+                  <div className="my-[12px]">
+                    <Separator width="100%" />
+                  </div>
+                )}
+              </div>
+            ))}
+            <div className="mx-[12px] mt-[12px]">
+              <BtnCustom
+                txt="Show more"
+                bgColor="#E3E3DE"
+                width="100%"
+                padding="6px 0"
+                txtColor="#132527"
+                onClick={() => setIsMapVisible(!isMapVisible)}
+              />
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Business Card */}
@@ -196,41 +236,6 @@ const ResultsPanel = () => {
         >
           Show Map
         </button>
-      )}
-
-      {isMapVisible && (
-        <div
-          className={`p-[8px_8px_30px_8px] bg-[#FCFBF8] overflow-x-hidden min absolute z-20 bottom-0 left-0 right-0 rounded-[12px_12px_0_0] border-b border-[#E3E3DE]`}
-        >
-          <p className="mb-[12px] text-[14px] text-[#727C7A] font-medium px-[12px] pt-[12px]">
-            Over {localBusinesses.length} local businesses in selected area
-          </p>
-          {localBusinesses.slice(0, 2).map((localBusinesse, index) => (
-            <div key={localBusinesse.id}>
-              <ResultCard
-                localBusinesseData={localBusinesse}
-                onClick={() =>
-                  handleCardClick(localBusinesse.id, localBusinesse)
-                }
-              />
-              {index !== 1 && (
-                <div className="my-[12px]">
-                  <Separator width="100%" />
-                </div>
-              )}
-            </div>
-          ))}
-          <div className="mx-[12px] mt-[12px]">
-            <BtnCustom
-              txt="Show more"
-              bgColor="#E3E3DE"
-              width="100%"
-              padding="6px 0"
-              txtColor="#132527"
-              onClick={() => setIsMapVisible(!isMapVisible)}
-            />
-          </div>
-        </div>
       )}
     </div>
   );

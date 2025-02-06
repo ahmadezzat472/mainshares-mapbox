@@ -15,7 +15,10 @@ const Navbar = () => {
   return (
     <div className=" bg-[#132527] fixed top-0 left-0 right-0 border-b border-[#374140] flex justify-between items-center h-[64px] px-[16px] md:px-[40px] text-white z-50">
       {/* Logo */}
-      <div className="flex shrink-0 items-center cursor-pointer" onClick={() => window.location.reload()}>
+      <div
+        className="flex shrink-0 items-center cursor-pointer"
+        onClick={() => window.location.reload()}
+      >
         <Logo />
       </div>
 
@@ -39,7 +42,11 @@ const Navbar = () => {
         </div>
 
         <div className="ml-[24px]">
-          <Button className="bg-white text-black hover:bg-gray-100 px-4 py-2 border border-gray-300 shadow-sm rounded-[4px]">
+          <Button
+            className="bg-white text-black px-4 py-2 border border-gray-300 shadow-sm rounded-[4px] 
+                  transition-all duration-300 
+                  hover:bg-gray-100 hover:shadow-md hover:border-gray-400 hover:scale-105"
+          >
             Apply here
           </Button>
         </div>

@@ -42,8 +42,8 @@ const Contact = ({
       <div>
         <Button
           style={{ backgroundColor: btnBackgroundColor, color: btnTxtColor }}
-          className="w-[200px] transition-all py-2 border shadow-sm rounded-[4px]"
-        >
+          className="w-[200px] transition-all duration-300 py-2 border shadow-sm rounded-[4px] hover:scale-105"
+          >
           Apply here
         </Button>
       </div>

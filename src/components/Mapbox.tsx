@@ -23,7 +23,7 @@ const Mapbox = ({ localBusinesses, activeCardId, setActiveCardId }: IProps) => {
         container: mapContainer.current,
         style: "mapbox://styles/mapbox/streets-v11",
         center: [0, 0],
-        zoom: 0,
+        zoom: 1,
         attributionControl: false,
       });
 
@@ -31,7 +31,6 @@ const Mapbox = ({ localBusinesses, activeCardId, setActiveCardId }: IProps) => {
       newMap.addControl(navControl, "bottom-right");
 
       setMap(newMap);
-
       return () => map?.remove(); // Cleanup on unmount
     }
   }, [map]);
@@ -42,10 +41,11 @@ const Mapbox = ({ localBusinesses, activeCardId, setActiveCardId }: IProps) => {
       const activeBusiness = localBusinesses.find(
         (business) => business.id === activeCardId
       );
+
       if (activeBusiness) {
         setTimeout(() => {
           map.flyTo({
-            center: [activeBusiness.lang, activeBusiness.lat - 0.013], // Ensure correct order [lng, lat]
+            center: [activeBusiness.lang, activeBusiness.lat], // Ensure correct order [lng, lat]
             zoom: 13, // Adjust zoom level
             essential: true, // Ensure smooth animation
             speed: 0.8, // Adjust speed for smoother transition
@@ -59,7 +59,10 @@ const Mapbox = ({ localBusinesses, activeCardId, setActiveCardId }: IProps) => {
   // Add clustered markers to the map
   useEffect(() => {
     if (map && localBusinesses.length > 0) {
-      const points = localBusinesses.map((business) => ({
+      const points: GeoJSON.Feature<
+        GeoJSON.Point,
+        { id: string; name: string; companyAddress: string }
+      >[] = localBusinesses.map((business) => ({
         type: "Feature",
         properties: {
           id: business.id,
@@ -86,7 +89,12 @@ const Mapbox = ({ localBusinesses, activeCardId, setActiveCardId }: IProps) => {
         const bounds = map.getBounds()?.toArray();
         const zoom = map.getZoom();
         const clusters = cluster.getClusters(
-          [bounds[0][0], bounds[0][1], bounds[1][0], bounds[1][1]],
+          [
+            bounds?.[0]?.[0] ?? 0,
+            bounds?.[0]?.[1] ?? 0,
+            bounds?.[1]?.[0] ?? 0,
+            bounds?.[1]?.[1] ?? 0,
+          ],
           Math.floor(zoom)
         );
 
@@ -140,22 +148,12 @@ const Mapbox = ({ localBusinesses, activeCardId, setActiveCardId }: IProps) => {
                 return;
               }
               setActiveCardId(id); // Update active marker state
-
-              // setTimeout(() => {
-              //   map.flyTo({
-              //     center: [coordinates[0], coordinates[1]], // Ensure correct order [lng, lat]
-              //     zoom: 15, // Adjust zoom level
-              //     essential: true, // Ensure smooth animation
-              //     speed: 0.8, // Adjust speed for smoother transition
-              //     curve: 1.42, // Adjust easing for a natural feel
-              //   });
-              // }, 100); // Delay execution slightly to allow state updates
             });
           }
 
           // Create a marker for the cluster
           new mapboxgl.Marker(el)
-            .setLngLat(coordinates)
+            .setLngLat([coordinates[0], coordinates[1]])
             .setPopup(
               new mapboxgl.Popup().setHTML(
                 isCluster

@@ -3,7 +3,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-// import Autoplay from "embla-carousel-autoplay";
+import Autoplay from "embla-carousel-autoplay";
 
 const CarouselPage = () => {
   return (
@@ -12,11 +12,11 @@ const CarouselPage = () => {
         align: "center",
         startIndex: 1,
       }}
-      //   plugins={[
-      //     Autoplay({
-      //       delay: 2000,
-      //     }),
-      //   ]}
+      plugins={[
+        Autoplay({
+          delay: 2000,
+        }),
+      ]}
       className="w-full "
     >
       <CarouselContent className="flex gap-[24px]">

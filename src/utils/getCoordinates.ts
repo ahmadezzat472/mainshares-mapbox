@@ -8,7 +8,6 @@ export const getCoordinates = async (
   try {
     const response = await fetch(url);
     const data = await response.json();
-
     if (data.features && data.features.length > 0) {
       const [longitude, latitude] = data.features[0].center;
       return { lat: latitude, lang: longitude };
