@@ -4,7 +4,7 @@ import ContactCarousel from "./ContactCarousel";
 
 const Feature = () => {
   return (
-    <div className="pt-[100px] md:pt-[120px] pb-[40px] md:pb-[48px] flex flex-col gap-[100px] md:gap-[160px]">
+    <div className="pt-[100px] md:pt-[120px] pb-[40px] md:pb-[48px] flex flex-col gap-[100px] md:gap-[160px] bg-customSecondary">
       <ContactCarousel />
       <Questions />
       <Contact

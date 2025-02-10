@@ -17,7 +17,7 @@ const CarouselPage = () => {
           delay: 2000,
         }),
       ]}
-      className="w-full "
+      className="w-full"
     >
       <CarouselContent className="flex gap-[24px]">
         <CarouselItem className="lg:basis-1/4 max-w-[320px] pl-0 relative">

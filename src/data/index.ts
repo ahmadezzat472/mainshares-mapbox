@@ -13,6 +13,10 @@ export const defaultLocalBusiness: LocalBusiness = {
   coverImage: "",
   lang: 0,
   lat: 0,
+  Categories: [],
+  IconsBackground: [],
+  IconsSVG:[],
+  IconsTransparent: [],
 };
 
 export const industryMapping: IDataFilter = {
@@ -60,3 +64,7 @@ export const industryMapping: IDataFilter = {
     "Other Automotive & Boat",
   ],
 };
+
+
+
+

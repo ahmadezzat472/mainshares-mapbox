@@ -7,7 +7,7 @@ interface IProps {
 const Separator = ({ width, height = "1px", rounded }: IProps) => {
   return (
     <div
-      className="bg-[#E3E3DE]"
+      className="bg-customAccent"
       style={{ width, height, borderRadius: rounded }}
     ></div>
   );

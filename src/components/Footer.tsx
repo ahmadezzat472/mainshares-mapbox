@@ -2,7 +2,7 @@ import Logo from "./Logo";
 
 const Footer = () => {
   return (
-    <div className="px-[50px] md:px-[70px] lg:px-[120px] py-[48px]">
+    <div className="px-[50px] md:px-[70px] lg:px-[120px] py-[48px] bg-customSecondary">
       <div
         className="flex shrink-0 items-center cursor-pointer"
         onClick={() => window.location.reload()}
@@ -18,12 +18,12 @@ const Footer = () => {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <rect width="1200" height="1" fill="#E3E3DE" />
+          <rect width="1200" height="1" className="fill-customAccent" />
         </svg>
       </div>
 
       <div className="flex justify-between">
-        <p className="text-[14px] text-[#374140]">
+        <p className="text-[14px] font-medium text-customPrimary">
           © 2024 Mainshares, LLC. All rights reserved.
         </p>
         <div className="flex gap-[6px] md:gap-[16px]">

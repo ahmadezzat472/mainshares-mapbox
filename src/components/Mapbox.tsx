@@ -68,6 +68,7 @@ const Mapbox = ({ localBusinesses, activeCardId, setActiveCardId }: IProps) => {
           id: business.id,
           name: business.name,
           companyAddress: business.companyAddress,
+          IconsSVG: business.IconsSVG,
         },
         geometry: {
           type: "Point",
@@ -128,11 +129,7 @@ const Mapbox = ({ localBusinesses, activeCardId, setActiveCardId }: IProps) => {
             el.innerHTML = `<div style="font-weight: bold; color: white; font-size: 18px">+${pointCount}</div>`;
           } else {
             el.classList.add("marker");
-            el.innerHTML = `
-                            <svg width="18" height="18" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M4.21875 0.375H13.7812H14.5547L14.8359 1.14844L16.5234 6H18V13.3125V16.125H14.625V13.3125H3.375V16.125H0V13.3125V6H1.44141L3.12891 1.14844L3.41016 0.375H4.21875ZM14.1328 6L12.9727 2.625H4.99219L3.83203 6H14.1328ZM2.25 9.375C2.25 10.0078 2.74219 10.5 3.375 10.5C3.97266 10.5 4.5 10.0078 4.5 9.375C4.5 8.77734 3.97266 8.25 3.375 8.25C2.74219 8.25 2.25 8.77734 2.25 9.375ZM14.625 8.25C13.9922 8.25 13.5 8.77734 13.5 9.375C13.5 10.0078 13.9922 10.5 14.625 10.5C15.2227 10.5 15.75 10.0078 15.75 9.375C15.75 8.77734 15.2227 8.25 14.625 8.25Z" fill="#FCFBF8"/>
-                            </svg>
-                        `;
+            el.innerHTML = `<img src=${clusterPoint.properties.IconsSVG} />`;
 
             // Set active marker color
             if (id === activeCardId) {

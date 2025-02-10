@@ -33,12 +33,14 @@ const Contact = ({
       <div>
         <img src={src} alt="Feature" />
       </div>
+
       <div className="text-center">
         <h1 className="text-[22px] md:text-[32px] lg:text-[48px] mb-[16px]">
           {title}
         </h1>
         <p className="w-auto lg:w-[800px]  m-auto">{description}</p>
       </div>
+      
       <div>
         <Button
           style={{ backgroundColor: btnBackgroundColor, color: btnTxtColor }}

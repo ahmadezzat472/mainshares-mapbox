@@ -23,10 +23,10 @@
   width: 20px;
   height: 20px;
   border: 1px solid #d0d2cd; /* Light gray border */
-  border-radius: 4px; /* Rounded corners */
+  border-radius: 2px; /* Rounded corners */
 
   /* Background */
-  background-color: white;
+  background-color: #FCFBF8;
 
   /* Transition for smooth effects */
   transition: all 0.3s ease;

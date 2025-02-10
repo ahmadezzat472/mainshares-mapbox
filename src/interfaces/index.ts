@@ -10,19 +10,6 @@ export interface IResultCard {
   site: string;
 }
 
-export interface LocalBusiness {
-  id: string;
-  name: string;
-  industry: string;
-  companyAddress: string;
-  companyPhone: string;
-  description: string | undefined;
-  email: string;
-  website: string;
-  logo: string | undefined;
-  coverImage: string | undefined;
-}
-
 export interface ResponseData {
   records: Record[];
   offset: string;
@@ -79,6 +66,10 @@ export interface Fields {
   "Approved - Send Email"?: boolean;
   "Application Received "?: boolean;
   "Date Approved"?: string;
+  Categories: string[],
+  "Icons SVG (from Categories)": string[],
+  "Icons Transparent (from Categories)": string[],
+  "Icons with Background (from Categories)": string[]
 }
 
 export interface LocalBusiness {
@@ -94,4 +85,8 @@ export interface LocalBusiness {
   coverImage: string | undefined;
   lat: number;
   lang: number;
+  Categories: string[],
+  IconsSVG: string[],
+  IconsTransparent: string[],
+  IconsBackground: string[],
 }
